@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Check24App</string>
+    <string name="loading">Loading</string>
+    <string name="action_retry_str">Retry</string>
+    <string name="screen_home_title_str">Shapes Home</string>
+    <string name="screen_details_title_str">Details</string>
+</resources>

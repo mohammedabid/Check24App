@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="shapesItem"
+            type="com.example.check24app.domain.model.ShapesModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/imgPhoto"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:background="@color/white"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="H,1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:urlToImage="@{shapesItem.image}"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@{shapesItem.name}"
+                    app:layout_constraintStart_toEndOf="@+id/imgPhoto"
+                    app:layout_constraintTop_toTopOf="@id/imgPhoto"
+                    app:layout_constraintEnd_toStartOf="@id/tv_date"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:text="Title" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:millisToDate="@{shapesItem.date}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/imgPhoto"
+                    tools:text="Title" />
+
+                <TextView
+                    android:id="@+id/tv_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="2"
+                    android:textColor="@color/teal_200"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@{shapesItem.desc}"
+                    app:layout_constraintStart_toEndOf="@+id/imgPhoto"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    tools:text="Description" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    app:layout_constraintStart_toEndOf="@+id/imgPhoto"
+                    app:layout_constraintTop_toBottomOf="@id/tv_desc">
+
+                    <TextView
+                        android:id="@+id/tv_price_lbl"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:text="Price"
+                        android:textColor="@color/black"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:maxLines="2"
+                        android:textColor="@color/teal_200"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:text="@{shapesItem.price}"
+                        app:layout_constraintTop_toTopOf="@id/tv_price_lbl"
+                        app:layout_constraintStart_toEndOf="@id/tv_price_lbl"
+                        tools:text="Description" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <RatingBar
+                    android:id="@+id/rb_shape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/cl_price"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:rating="@{shapesItem.rating}"
+                    android:numStars="5" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+</layout>
